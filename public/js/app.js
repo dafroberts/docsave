@@ -1984,10 +1984,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/documents/Latest.vue?vue&type=script&lang=js&":
-/*!***************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/documents/Latest.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/documents/DocumentPreview.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/documents/DocumentPreview.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2012,29 +2012,75 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     pdf: vue_pdf__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
+  props: {
+    document: {
+      type: Object,
+      required: true
+    },
+    type: {
+      type: String,
+      "default": 'unsorted'
+    },
+    fixedHeight: {
+      type: Boolean,
+      "default": false
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/documents/Latest.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/documents/Latest.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       documents: [],
@@ -2170,9 +2216,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _johmun_vue_tags_input__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @johmun/vue-tags-input */ "./node_modules/@johmun/vue-tags-input/dist/vue-tags-input.js");
 /* harmony import */ var _johmun_vue_tags_input__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_johmun_vue_tags_input__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var vuejs_datepicker__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuejs-datepicker */ "./node_modules/vuejs-datepicker/dist/vuejs-datepicker.esm.js");
-//
-//
-//
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -2270,19 +2319,13 @@ __webpack_require__.r(__webpack_exports__);
 
       this.loading = true;
       axios.get(route('api.documents.unsorted')).then(function (response) {
-        console.log(response.data);
         var defaultDate = new Date();
-        response.data.unsorted.forEach(function (doc) {
-          _this.documents.not_tracked.push({
-            fullUrl: doc.full_url,
-            fileName: doc.filename,
-            name: doc.filename,
-            pdfIsLoading: true,
-            isLoading: false,
+        _this.documents.not_tracked = response.data.unsorted.map(function (doc) {
+          return _objectSpread({
             tags: [],
             unsavedTags: '',
             date: defaultDate
-          });
+          }, doc);
         });
       })["catch"](function (e) {
         return _this.niceError(e);
@@ -75540,6 +75583,72 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/documents/DocumentPreview.vue?vue&type=template&id=d8ec5c0a&":
+/*!****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/documents/DocumentPreview.vue?vue&type=template&id=d8ec5c0a& ***!
+  \****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "document-preview" }, [
+    _vm.document.document_file_class.extension == "pdf"
+      ? _c(
+          "div",
+          {
+            staticClass: "pdf-preview",
+            class: { "fixed-height": _vm.fixedHeight }
+          },
+          [
+            _c(
+              "a",
+              { attrs: { href: _vm.document.document_url, target: "_blank" } },
+              [
+                _c("pdf", {
+                  attrs: {
+                    src:
+                      "/storage/documents/" +
+                      _vm.type +
+                      "/" +
+                      _vm.document.location
+                  }
+                })
+              ],
+              1
+            )
+          ]
+        )
+      : _vm.document.document_file_class.extension == "jpeg"
+      ? _c("div", {
+          staticClass: "img-preview",
+          style: {
+            backgroundImage:
+              "url('/storage/documents/" +
+              _vm.type +
+              "/" +
+              _vm.document.location +
+              "')"
+          }
+        })
+      : _c("div", { staticClass: "text-center my-5" }, [
+          _vm._v("\n        Unable to display preview\n    ")
+        ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/documents/Latest.vue?vue&type=template&id=ce106bae&":
 /*!*******************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/documents/Latest.vue?vue&type=template&id=ce106bae& ***!
@@ -75571,80 +75680,78 @@ var render = function() {
                       "div",
                       { key: i, staticClass: "col-12 col-md-3" },
                       [
-                        _c("div", { staticClass: "card h-100 shadow-sm" }, [
-                          _c(
-                            "div",
-                            { staticClass: "pdf-preview fixed-height" },
-                            [
-                              _c("pdf", {
-                                attrs: {
-                                  src:
-                                    "/storage/documents/sorted/" +
-                                    document.location
-                                }
-                              })
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            { staticClass: "card-body d-flex flex-column" },
-                            [
-                              _c("h5", { staticClass: "card-title" }, [
-                                _vm._v(_vm._s(document.name))
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: "date mt-auto text-muted" },
-                                [
-                                  _c("p", { staticClass: "card-text" }, [
-                                    _c("strong", [
-                                      _vm._v(_vm._s(document.created_at))
-                                    ])
-                                  ]),
-                                  _vm._v(" "),
-                                  _c(
-                                    "a",
-                                    {
-                                      attrs: {
-                                        href: _vm.route("docs.download", {
-                                          document: document.id
-                                        }),
-                                        title: "Download"
-                                      }
-                                    },
-                                    [
-                                      _c("i", {
-                                        staticClass:
-                                          "icon-btn ri-download-line bg-primary",
-                                        attrs: { title: "Download" }
-                                      })
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "a",
-                                    {
-                                      attrs: {
-                                        href: document.document_url,
-                                        target: "_blank",
-                                        title: "View"
-                                      }
-                                    },
-                                    [
-                                      _c("i", {
-                                        staticClass:
-                                          "icon-btn ri-eye-line bg-info"
-                                      })
-                                    ]
-                                  )
-                                ]
-                              )
-                            ]
-                          )
-                        ])
+                        _c(
+                          "div",
+                          { staticClass: "card h-100 shadow-sm" },
+                          [
+                            _c("document-preview", {
+                              attrs: {
+                                document: document,
+                                "fixed-height": true,
+                                type: "sorted"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "card-body d-flex flex-column" },
+                              [
+                                _c("h5", { staticClass: "card-title" }, [
+                                  _vm._v(_vm._s(document.name))
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "date mt-auto text-muted" },
+                                  [
+                                    _c("p", { staticClass: "card-text" }, [
+                                      _c("strong", [
+                                        _vm._v(_vm._s(document.created_at))
+                                      ])
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "a",
+                                      {
+                                        attrs: {
+                                          href: _vm.route("docs.download", {
+                                            document: document.id
+                                          }),
+                                          title: "Download"
+                                        }
+                                      },
+                                      [
+                                        _c("i", {
+                                          staticClass:
+                                            "icon-btn ri-download-line bg-primary",
+                                          attrs: { title: "Download" }
+                                        })
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "a",
+                                      {
+                                        attrs: {
+                                          href: document.document_url,
+                                          target: "_blank",
+                                          title: "View"
+                                        }
+                                      },
+                                      [
+                                        _c("i", {
+                                          staticClass:
+                                            "icon-btn ri-eye-line bg-info"
+                                        })
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ]
+                            )
+                          ],
+                          1
+                        )
                       ]
                     )
                   })
@@ -75912,52 +76019,9 @@ var render = function() {
                           class: { loading: document.isLoading }
                         },
                         [
-                          _c(
-                            "div",
-                            {
-                              staticClass: "pdf-preview",
-                              class: { loading: document.pdfIsLoading }
-                            },
-                            [
-                              _c(
-                                "a",
-                                {
-                                  attrs: {
-                                    href: document.fullUrl,
-                                    target: "_blank"
-                                  }
-                                },
-                                [
-                                  document.pdfIsLoading
-                                    ? _c(
-                                        "div",
-                                        { staticClass: "lds-ellipsis" },
-                                        [
-                                          _c("div"),
-                                          _c("div"),
-                                          _c("div"),
-                                          _c("div")
-                                        ]
-                                      )
-                                    : _vm._e(),
-                                  _vm._v(" "),
-                                  _c("pdf", {
-                                    attrs: {
-                                      src:
-                                        "/storage/documents/unsorted/" +
-                                        document.fileName
-                                    },
-                                    on: {
-                                      "page-loaded": function($event) {
-                                        document.pdfIsLoading = false
-                                      }
-                                    }
-                                  })
-                                ],
-                                1
-                              )
-                            ]
-                          ),
+                          _c("document-preview", {
+                            attrs: { document: document, type: "unsorted" }
+                          }),
                           _vm._v(" "),
                           _c("div", { staticClass: "card-body" }, [
                             _c("div", { staticClass: "form-group" }, [
@@ -76064,7 +76128,8 @@ var render = function() {
                               [_vm._v("Save")]
                             )
                           ])
-                        ]
+                        ],
+                        1
                       )
                     }),
                     0
@@ -93023,6 +93088,7 @@ Vue.component('unsorted-documents', __webpack_require__(/*! ./components/documen
 Vue.component('latest-documents', __webpack_require__(/*! ./components/documents/Latest.vue */ "./resources/js/components/documents/Latest.vue")["default"]);
 Vue.component('all-documents', __webpack_require__(/*! ./components/documents/AllDocuments.vue */ "./resources/js/components/documents/AllDocuments.vue")["default"]);
 Vue.component('document-search', __webpack_require__(/*! ./components/documents/Search.vue */ "./resources/js/components/documents/Search.vue")["default"]);
+Vue.component('document-preview', __webpack_require__(/*! ./components/documents/DocumentPreview.vue */ "./resources/js/components/documents/DocumentPreview.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -93176,6 +93242,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AllDocuments_vue_vue_type_template_id_11dd3d8e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AllDocuments_vue_vue_type_template_id_11dd3d8e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/documents/DocumentPreview.vue":
+/*!***************************************************************!*\
+  !*** ./resources/js/components/documents/DocumentPreview.vue ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _DocumentPreview_vue_vue_type_template_id_d8ec5c0a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DocumentPreview.vue?vue&type=template&id=d8ec5c0a& */ "./resources/js/components/documents/DocumentPreview.vue?vue&type=template&id=d8ec5c0a&");
+/* harmony import */ var _DocumentPreview_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DocumentPreview.vue?vue&type=script&lang=js& */ "./resources/js/components/documents/DocumentPreview.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _DocumentPreview_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _DocumentPreview_vue_vue_type_template_id_d8ec5c0a___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _DocumentPreview_vue_vue_type_template_id_d8ec5c0a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/documents/DocumentPreview.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/documents/DocumentPreview.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/documents/DocumentPreview.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DocumentPreview_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./DocumentPreview.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/documents/DocumentPreview.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DocumentPreview_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/documents/DocumentPreview.vue?vue&type=template&id=d8ec5c0a&":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/components/documents/DocumentPreview.vue?vue&type=template&id=d8ec5c0a& ***!
+  \**********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DocumentPreview_vue_vue_type_template_id_d8ec5c0a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./DocumentPreview.vue?vue&type=template&id=d8ec5c0a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/documents/DocumentPreview.vue?vue&type=template&id=d8ec5c0a&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DocumentPreview_vue_vue_type_template_id_d8ec5c0a___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DocumentPreview_vue_vue_type_template_id_d8ec5c0a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

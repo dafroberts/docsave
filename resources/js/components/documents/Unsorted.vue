@@ -16,12 +16,9 @@
             <template v-if="documents.not_tracked.length">
                 <div class="card-columns">
                     <div v-for="(document, i) in documents.not_tracked" :key="i" class="card" :class="{loading: document.isLoading}">
-                        <div class="pdf-preview" :class="{loading: document.pdfIsLoading}">
-                            <a :href="document.fullUrl" target="_blank">
-                                <div v-if="document.pdfIsLoading" class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
-                                <pdf :src="'/storage/documents/unsorted/'+document.fileName" @page-loaded="document.pdfIsLoading = false"></pdf>
-                            </a>
-                        </div>
+                        
+                        <document-preview :document="document" type="unsorted"></document-preview>
+
                         <div class="card-body">
                             <div class="form-group">
                                 <label :for="'doc-name-'+i">Document name</label>
@@ -104,21 +101,16 @@ export default {
             this.loading = true;
 
             axios.get(route('api.documents.unsorted')).then(response => {
-                console.log(response.data);
                 let defaultDate = new Date();
 
-                response.data.unsorted.forEach(doc => {
-                    this.documents.not_tracked.push({
-                        fullUrl: doc.full_url,
-                        fileName: doc.filename,
-                        name: doc.filename,
-                        pdfIsLoading: true,
-                        isLoading: false,
+                this.documents.not_tracked = response.data.unsorted.map(doc => {
+                    return {
                         tags: [],
                         unsavedTags: '',
                         date: defaultDate,
-                    })
-                })
+                        ...doc,
+                    }
+                });
             }).catch(e => this.niceError(e)).finally(() => {
                 this.loading = false;
             });

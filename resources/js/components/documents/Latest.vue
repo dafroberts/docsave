@@ -11,9 +11,9 @@
                 <template v-if="documents.length">
                     <div v-for="(document, i) in documents" :key="i" class="col-12 col-md-3">
                         <div class="card h-100 shadow-sm">
-                            <div class="pdf-preview fixed-height">
-                                <pdf :src="'/storage/documents/sorted/'+document.location"></pdf>
-                            </div>
+
+                            <document-preview :document="document" :fixed-height="true" type="sorted"></document-preview>
+
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title">{{ document.name }}</h5>
 
@@ -35,13 +35,7 @@
 </template>
 
 <script>
-import pdf from 'vue-pdf'
-
 export default {
-    components: {
-        pdf,
-    },
-
     data() {
         return {
             documents: [],

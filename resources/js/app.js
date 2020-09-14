@@ -43,6 +43,7 @@ Vue.component('unsorted-documents', require('./components/documents/Unsorted.vue
 Vue.component('latest-documents', require('./components/documents/Latest.vue').default);
 Vue.component('all-documents', require('./components/documents/AllDocuments.vue').default);
 Vue.component('document-search', require('./components/documents/Search.vue').default);
+Vue.component('document-preview', require('./components/documents/DocumentPreview.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

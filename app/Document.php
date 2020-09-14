@@ -2,7 +2,10 @@
 
 namespace App;
 
+use Exception;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
 
 class Document extends Model
 {
@@ -21,7 +24,8 @@ class Document extends Model
     ];
 
     protected $appends = [
-        'document_url'
+        'document_url',
+        'document_file_class',
     ];
 
     /**
@@ -35,5 +39,16 @@ class Document extends Model
     public function getDocumentUrlAttribute()
     {
         return asset('storage/documents/sorted/'.$this->location);
+    }
+
+    public function getDocumentFileClassAttribute() {
+        try {
+            $doc = new File(Storage::disk('documents')->path('sorted/'.$this->location));
+            return [
+                'extension' => $doc->extension(),
+            ];
+        } catch(Exception $e) {
+            return null;
+        }
     }
 }

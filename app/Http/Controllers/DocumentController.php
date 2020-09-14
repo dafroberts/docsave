@@ -20,9 +20,15 @@ class DocumentController extends Controller
             $this_doc = new File(Storage::disk('documents')->path($doc));
 
             return [
-                'full_url' => Storage::disk('documents')->url($doc),
-                'filename' => $this_doc->getFilename(),
-                'extension' => $this_doc->getExtension(),
+                'document_file_class' => (object) [
+                    'extension' => $this_doc->extension()
+                ],
+                'document_url' => Storage::disk('documents')->url($doc),
+                'location' => $this_doc->getFilename(),
+
+                // 'full_url' => Storage::disk('documents')->url($doc),
+                // 'filename' => $this_doc->getFilename(),
+                // 'extension' => $this_doc->getExtension(),
             ];
         }, Storage::disk('documents')->allFiles('unsorted'));
 
@@ -180,6 +186,9 @@ class DocumentController extends Controller
     }
 
     public function download(Document $document) {
-        return Storage::disk('documents')->download('sorted/'.$document->location, $document->name.'.pdf');
+        // Get the file
+        $doc = new File(Storage::disk('documents')->path('sorted/'.$document->location));
+
+        return Storage::disk('documents')->download('sorted/'.$document->location, $document->name.'.'.$doc->extension());
     }
 }

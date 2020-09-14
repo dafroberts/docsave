@@ -14109,6 +14109,11 @@ h6 i {
   overflow: hidden;
 }
 
+.img-preview {
+  background-size: cover;
+  height: 250px;
+}
+
 .pdf-preview.loading {
   min-height: 200px;
 }
