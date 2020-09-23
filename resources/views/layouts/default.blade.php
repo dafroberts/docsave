@@ -83,14 +83,14 @@
                             </li>
 
                             <li class="nav-item">
-                                <span class="nav-link" href="#">
+                                <a class="nav-link active" href="{{ route('docs.backups') }}">
                                     <div class="icon">
                                         <i class="ri-database-2-line"></i>
                                     </div>
                                     <div class="label">
-                                        Backups <small>Coming soon</small>
+                                        Backups
                                     </div>
-                                </span>
+                                </a>
                             </li>
                         </ul>
                     </div>

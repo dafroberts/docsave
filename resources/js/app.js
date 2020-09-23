@@ -6,7 +6,9 @@
 
 require('./bootstrap');
 
+import BootstrapVue from 'bootstrap-vue';
 import Toast, { TYPE } from "vue-toastification";
+import { format } from 'date-fns';
 
 // Toast default options
 const options = {
@@ -26,6 +28,7 @@ const options = {
 window.Vue = require('vue');
 
 Vue.use(Toast, options);
+Vue.use(BootstrapVue);
 
 /**
  * The following block of code may be used to automatically register your
@@ -44,6 +47,7 @@ Vue.component('latest-documents', require('./components/documents/Latest.vue').d
 Vue.component('all-documents', require('./components/documents/AllDocuments.vue').default);
 Vue.component('document-search', require('./components/documents/Search.vue').default);
 Vue.component('document-preview', require('./components/documents/DocumentPreview.vue').default);
+Vue.component('backups', require('./components/backups/Backups.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -53,6 +57,12 @@ Vue.component('document-preview', require('./components/documents/DocumentPrevie
 
  // Apply Vue globals
 Vue.mixin({
+    data () {
+        return {
+            format,
+        }
+    },
+
     methods: {
         niceError(e = null) {
             // Display a nice error message to the user
@@ -68,6 +78,7 @@ Vue.mixin({
                 throw new Error(e);
             }
         },
+
         route: (name, params, absolute) => route(name, params, absolute, Ziggy),
     }
 });
