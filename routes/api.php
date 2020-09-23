@@ -25,4 +25,8 @@ Route::get('/documents/latest', 'DocumentController@latest')->name('api.document
 Route::get('/documents/index', 'DocumentController@index')->name('api.documents.index');
 Route::post('/documents/search', 'DocumentController@search')->name('api.documents.search');
 
+
+Route::get('/backups/index', 'BackupController@index')->name('api.backups.index');
+Route::get('/backups/create', 'BackupController@create')->name('api.backups.create');
+
 Route::get('/tags', 'TagController@index')->name('api.tags.index');

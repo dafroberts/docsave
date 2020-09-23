@@ -25,6 +25,11 @@ Route::get('documents/search', function() {
     return view('documents.search');
 })->name('docs.search');
 
+Route::get('documents/backups', function() {
+    return view('backups.index');
+})->name('docs.backups');
+
 Route::get('documents/download/{document}', 'DocumentController@download')->name('docs.download');
+Route::get('backups/download/{backup}', 'BackupController@download')->name('backups.download');
 
 // Route::get('documents/unsorted', 'DocumentController@unsorted')->name('documents.unsorted');

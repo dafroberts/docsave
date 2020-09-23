@@ -4,6 +4,7 @@ return [
     'whitelist' => [
         'api.*',
         'docs.unsorted',
-        'docs.download'
+        'docs.download',
+        'backups.download'
     ],
 ];
